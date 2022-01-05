@@ -10,9 +10,12 @@ const main = async () => {
     let contractBalance = await hre.ethers.provider.getBalance(waveContract.address);
     console.log("Contract Balance: ", hre.ethers.utils.formatEther(contractBalance));
 
-    // Send Wave
-    let waveTransaction = await waveContract.wave('A message!');
+    // Send 2 Waves
+    let waveTransaction = await waveContract.wave('First One!');
     await waveTransaction.wait();
+
+    let waveTransaction2 = await waveContract.wave('Second One!');
+    await waveTransaction2.wait();
 
     // Let's see what changed
     contractBalance = await hre.ethers.provider.getBalance(waveContract.address);
